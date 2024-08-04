@@ -115,7 +115,7 @@
             "community": "Communauté",
             "title": "Titre",
             "body": "Contenu",
-            "generateTitle": "Generate le Titre",
+            "generateTitle": "Générer le Titre",
             "uploadImage": "Ajouter une Image",
             "url": "URL",
             "nsfw": "NSFW",
@@ -371,6 +371,12 @@
                 "description": "Ceci remettera a zéro toute la configuration de l'apparence, il est conseillé de l'exporter d'abord."
             },
             "title": "Apparence"
+        },
+        "community": {
+            "settings": {
+                "team": "Administrateurs",
+                "settings": "Paramètres"
+            }
         }
     },
     "verifyEmail": {

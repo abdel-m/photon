@@ -10,10 +10,11 @@
 
 <nav
   class="flex flex-row items-center gap-1 p-1 rounded-full bg-white/60 dark:bg-zinc-800/60
-  backdrop-blur-lg border border-slate-200/60 dark:border-zinc-800 shadow-lg {$$props.class ??
+  backdrop-blur-lg border border-slate-200/60 dark:border-zinc-800 {$$props.class ??
     ''}
   "
 >
+<div class="flex items-center gap-1 overflow-x-auto w-[85vw] ">
   {#each routes as route}
     <a
       href={route.href}
@@ -29,5 +30,6 @@
       {/if}
     </a>
   {/each}
+</div>
   <slot />
 </nav>

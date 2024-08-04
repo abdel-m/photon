@@ -293,21 +293,6 @@
       class="w-full"
     />
     <Button
-      on:click={() => generateTitle(data.url)}
-      style="height: 38px; {!generation.generatable
-        ? 'width: 38px; padding: 0;'
-        : ''}"
-      class="flex-shrink-0"
-      title={$t('form.post.generateTitle')}
-      loading={generation.loading}
-      disabled={!generation.generatable || generation.loading}
-    >
-      <Icon src={Sparkles} size="18" mini slot="prefix" />
-      {#if generation.generatable}
-        {$t('form.post.generateTitle')}
-      {/if}
-    </Button>
-    <Button
       on:click={() => (addAltText = !addAltText)}
       style="width: 38px; height: 38px; padding: 0;"
       class="flex-shrink-0"

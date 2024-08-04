@@ -58,13 +58,11 @@
       class="font-normal w-full h-max"
       color="none"
       alignment="left"
-      href="/c/{follow.name}@{new URL(follow.actor_id).hostname}"
+      href="/c/{follow.name}"
     >
       <div class="flex flex-col max-w-full break-words" slot="label">
         <span>{follow.title}</span>
-        <span class="text-xs text-slate-600 dark:text-zinc-400">
-          {new URL(follow.actor_id).hostname}
-        </span>
+        
       </div>
     </SidebarButton>
   </div>

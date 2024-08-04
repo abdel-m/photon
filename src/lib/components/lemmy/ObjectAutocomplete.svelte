@@ -32,7 +32,7 @@
 
       return results.communities.map((c) => c.community)
     }}
-    extractName={(c) => `${c.title}@${new URL(c.actor_id).hostname}`}
+    extractName={(c) => `${c.title}`}
     on:select
     bind:query={q}
     {showWhenEmpty}

@@ -16,7 +16,7 @@
 
 <div class="flex flex-col gap-4 h-full">
   <div
-    class="sticky mx-auto z-50 max-w-full min-w-0 flex items-center gap-2"
+    class="sticky mx-auto z-50 max-w-full min-w-0 flex items-center gap-2 overflow-x-auto"
     style="top: max(1.5rem, {$contentPadding.top}px);"
   >
     <Tabs

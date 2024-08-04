@@ -222,6 +222,9 @@
 
   <header class="flex flex-col gap-2">
     <div class="flex flex-row justify-between items-center gap-2 flex-wrap">
+      <Button on:click={() => history.back()} size="square-md">
+        <Icon src={ArrowLeft} mini size="16" slot="prefix" />
+      </Button>
       <PostMeta
         community={post.post_view.community}
         user={post.post_view.creator}
@@ -242,9 +245,7 @@
         bind:title={post.post_view.post.name}
         style="width: max-content;"
       />
-      <Button on:click={() => history.back()} size="square-md">
-        <Icon src={ArrowLeft} mini size="16" slot="prefix" />
-      </Button>
+      
     </div>
     <h1 class="font-bold text-xl font-display leading-5">
       <Markdown source={post.post_view.post.name} inline />

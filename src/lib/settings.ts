@@ -107,9 +107,9 @@ export const defaultSettings: Settings = {
   expandableImages: toBool(env.PUBLIC_EXPANDABLE_IMAGES) ?? true,
   markReadPosts: toBool(env.PUBLIC_MARK_READ_POSTS) ?? true,
   showInstances: {
-    user: toBool(env.PUBLIC_SHOW_INSTANCES_USER) ?? true,
-    community: toBool(env.PUBLIC_SHOW_INSTANCES_COMMUNITY) ?? true,
-    comments: toBool(env.PUBLIC_SHOW_INSTANCES_COMMENTS) ?? true,
+    user: toBool(env.PUBLIC_SHOW_INSTANCES_USER) ?? false,
+    community: toBool(env.PUBLIC_SHOW_INSTANCES_COMMUNITY) ?? false,
+    comments: toBool(env.PUBLIC_SHOW_INSTANCES_COMMENTS) ?? false,
   },
   defaultSort: {
     sort: env.PUBLIC_DEFAULT_FEED_SORT ?? ('Active' as any),
@@ -131,14 +131,23 @@ export const defaultSettings: Settings = {
   },
   displayNames: toBool(env.PUBLIC_DISPLAY_NAMES) ?? true,
   nsfwBlur: toBool(env.PUBLIC_NSFW_BLUR) ?? true,
+  
   moderation: {
     presets: [
       {
         title: 'Preset 1',
-        content: `Your submission in *"{{post}}"* was removed for {{reason}}.`,
+        content: `Votre soumission dans *"{{post}}"* a été supprimée pour {{reason}}.`
       },
-    ],
-  },
+      {
+        title: 'Preset 2',
+        content: `Votre publication dans *"{{post}}"* a été retirée en raison de {{reason}}.`
+      },
+      {
+        title: 'Preset 3',
+        content: `Votre message dans *"{{post}}"* a été enlevé car {{reason}}.`
+      }
+    ]
+  },  
   randomPlaceholders: toBool(env.PUBLIC_RANDOM_PLACEHOLDERS) ?? true,
   modlogCardView: toBool(env.PUBLIC_MODLOG_CARD_VIEW) ?? undefined,
   debugInfo: toBool(env.PUBLIC_DEBUG_INFO) ?? false,
@@ -148,7 +157,7 @@ export const defaultSettings: Settings = {
   // @ts-ignore
   font: env.PUBLIC_FONT ?? 'inter',
   leftAlign: toBool(env.PUBLIC_LEFT_ALIGN) ?? false,
-  hidePhoton: toBool(env.PUBLIC_REMOVE_CREDIT) ?? false,
+  hidePhoton: toBool(env.PUBLIC_REMOVE_CREDIT) ?? true,
   newWidth: toBool(env.PUBLIC_LIMIT_LAYOUT_WIDTH) ?? true,
   markPostsAsRead: toBool(env.PUBLIC_MARK_POSTS_AS_READ) ?? true,
   openLinksInNewTab: false,
@@ -160,8 +169,8 @@ export const defaultSettings: Settings = {
     piped: undefined,
   },
   dock: {
-    noGap: toBool(env.PUBLIC_DOCK_PANEL) ?? null,
-    top: toBool(env.PUBLIC_DOCK_TOP) ?? null,
+    noGap: toBool(env.PUBLIC_DOCK_PANEL) ?? true,
+    top: toBool(env.PUBLIC_DOCK_TOP) ?? true,
     pins: [],
   },
   posts: {
@@ -170,7 +179,7 @@ export const defaultSettings: Settings = {
     showHidden: false,
   },
   infiniteScroll: true,
-  language: env.PUBLIC_LANGUAGE ?? null,
+  language: env.PUBLIC_LANGUAGE ?? 'fr',
   useRtl: false,
   translator: env.PUBLIC_TRANSLATOR ?? undefined,
   parseTags: true,

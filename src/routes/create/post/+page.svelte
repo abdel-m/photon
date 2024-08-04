@@ -48,6 +48,6 @@
     passedCommunity={community}
     on:submit={(e) => goto(`/post/${e.detail.post.id}`)}
   >
-    <Header class="text-3xl font-bold" slot="formtitle">Create Post</Header>
+    <Header class="text-3xl font-bold" slot="formtitle">Créer un poste</Header>
   </PostForm>
 </div>

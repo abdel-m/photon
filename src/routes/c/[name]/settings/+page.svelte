@@ -7,7 +7,7 @@
 
 <div class="flex flex-col gap-4">
   <CommunityTitle community={data.community.community_view.community} />
-  <h1 class="font-bold text-2xl">Settings</h1>
+  <h1 class="font-bold text-2xl">Paramètres</h1>
   <CommunityForm
     edit={data.community.community_view.community.id}
     formData={{

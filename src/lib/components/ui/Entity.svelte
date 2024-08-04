@@ -12,6 +12,6 @@
   </slot>
   <div class="flex flex-col">
     <span class="font-semibold text-base">{name}</span>
-    <span class="text-sm">{label}</span>
+    <span class="text-sm overflow-hidden overflow-ellipsis whitespace-nowrap">{label}</span>
   </div>
 </div>

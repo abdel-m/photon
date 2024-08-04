@@ -27,7 +27,7 @@ export const searchParam = (
 }
 
 export const fullCommunityName = (name: string, actorId: string) =>
-  `${name}@${new URL(actorId).hostname}`
+  `${name}`
 
 export const placeholders = {
   url: ['https://www.youtube.com/watch?v=dQw4w9WgXcQ'],

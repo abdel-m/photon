@@ -211,7 +211,7 @@
     <MenuDivider>{$t('post.actions.more.creator')}</MenuDivider>
     <MenuButton
       link
-      href="/u/{post.creator.name}@{new URL(post.creator.actor_id).hostname}"
+      href="/u/{post.creator.name}"
     >
       <Icon src={UserCircle} size="16" micro slot="prefix" />
       <span>{post.creator.name}</span>
@@ -223,31 +223,6 @@
     >
       <Icon src={Newspaper} size="16" micro slot="prefix" />
       <span>{post.community.title}</span>
-    </MenuButton>
-    <MenuButton
-      loading={fediseerLoading}
-      on:click={async (e) => {
-        e.stopImmediatePropagation()
-
-        fediseerLoading = true
-        const data = await fediseer.getInstanceInfo(
-          new URL(post.community.actor_id).hostname
-        )
-        fediseerData = data
-        fediseerOpen = true
-        fediseerLoading = false
-
-        return
-      }}
-    >
-      <svelte:fragment slot="prefix">
-        {#if fediseerLoading}
-          <Spinner width={14} />
-        {:else}
-          <Icon src={ServerStack} size="16" micro />
-        {/if}
-      </svelte:fragment>
-      <span>{new URL(post.community.actor_id).hostname}</span>
     </MenuButton>
     <hr class="w-[90%] mx-auto opacity-100 dark:opacity-10 my-2" />
     <MenuDivider>{$t('post.actions.more.actions')}</MenuDivider>
@@ -319,7 +294,7 @@
           setSessionStorage('postDraft', {
             body: `${
               $userSettings.crosspostOriginalLink
-                ? `cross-posted from: ${post.post.ap_id}`
+                ? `Crossposté depuis: ${post.post.ap_id}`
                 : ``
             }\n${
               post.post.body

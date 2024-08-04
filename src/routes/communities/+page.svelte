@@ -42,18 +42,6 @@
       slot="target"
       class="!inline"
     />
-    <Material slot="popover" color="distinct" class="w-72">
-      <p class="font-normal">
-        Can't find a community on your home instance? Go to the <a
-          href="/search"
-          class="text-blue-500 hover:underline"
-        >
-          search
-        </a>
-        page, and search with this syntax:
-        <code>!community@instance.com</code>
-      </p>
-    </Material>
   </Popover>
 
   <form
@@ -95,7 +83,7 @@
     <CommunityItem {community} />
   {/each}
 </ul>
-{#if data.communities.length > 0}
+{#if data.communities.length > 0 && data.communities.length >= 40}
   <div class="mt-2 w-full">
     <Pageination
       page={Number($page.url.searchParams.get('page')) || 1}

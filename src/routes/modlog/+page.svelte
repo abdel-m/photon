@@ -33,11 +33,11 @@
 </script>
 
 <svelte:head>
-  <title>Modlog</title>
+  <title>Journal de modération</title>
 </svelte:head>
 
 <div class="flex flex-col gap-4">
-  <h1 class="font-bold text-2xl">Modlog</h1>
+  <h1 class="font-bold text-2xl">Journal de modération</h1>
   <div class="flex flex-row flex-wrap gap-2">
     <Select
       bind:value={data.type}
@@ -45,63 +45,44 @@
       class="w-48"
     >
       <span slot="label" class="flex gap-1 items-center">
-        <Icon src={Bars3BottomRight} size="15" mini />
-        Type
+      <Icon src={Bars3BottomRight} size="15" mini />
+      Type
       </span>
-      <option value="All">All</option>
-      <option value="ModRemovePost">Remove Post</option>
-      <option value="ModLockPost">Lock Post</option>
-      <option value="ModFeaturePost">Feature Post</option>
-      <option value="ModRemoveComment">Remove Comment</option>
-      <option value="ModRemoveCommunity">Remove Community</option>
-      <option value="ModBanFromCommunity">Ban From Community</option>
-      <option value="ModAddCommunity">Add Moderator</option>
-      <option value="ModTransferCommunity">Transfer Community</option>
-      <option value="ModAdd">Add Admin</option>
-      <option value="ModBan">Ban Admin</option>
-      <option value="ModHideCommunity">Hide Community</option>
-      <option value="AdminPurgePerson">Purge User</option>
-      <option value="AdminPurgeCommunity">Purge Community</option>
-      <option value="AdminPurgePost">Purge Post</option>
-      <option value="AdminPurgeComment">Purge Comment</option>
+      <option value="All">Tous</option>
+      <option value="ModRemovePost">Supprimer le poste</option>
+      <option value="ModLockPost">Verrouiller le poste</option>
+      <option value="ModFeaturePost">Mettre en avant le poste</option>
+      <option value="ModRemoveComment">Supprimer le commentaire</option>
+      <option value="ModRemoveCommunity">Supprimer la communauté</option>
+      <option value="ModBanFromCommunity">Bannir de la communauté</option>
+      <option value="ModAddCommunity">Ajouter un modérateur</option>
+      <option value="ModTransferCommunity">Transférer la communauté</option>
+      <option value="ModAdd">Ajouter un administrateur</option>
+      <option value="ModBan">Bannir un administrateur</option>
+      <option value="ModHideCommunity">Masquer la communauté</option>
+      <option value="AdminPurgePerson">Purger l'utilisateur</option>
+      <option value="AdminPurgeCommunity">Purger la communauté</option>
+      <option value="AdminPurgePost">Purger le poste</option>
+      <option value="AdminPurgeComment">Purger le commentaire</option>
     </Select>
 
     <Select bind:value={view} class="w-36">
       <span slot="label" class="flex gap-1 items-center">
         <Icon src={ViewColumns} size="15" mini />
-        View
+        Affichage
       </span>
-      <option value="false">Table</option>
-      <option value="true">Cards</option>
-      <option value="undefined">Default</option>
+      <option value="false">Tableau</option>
+      <option value="true">Carte</option>
+      <option value="undefined">Défaut</option>
     </Select>
   </div>
   <div class="flex flex-col md:flex-row md:items-center gap-2 w-full">
     <ObjectAutocomplete
-      type="instance"
-      placeholder="Filter by instance"
-      jwt={$profile?.jwt}
-      showWhenEmpty={true}
-      label="Instance"
-      class="flex-1"
-      q={$page.url.searchParams.get('instance') || ''}
-      on:select={(e) =>
-        searchParam(
-          $page.url,
-          'instance',
-          e.detail?.domain.toString() ?? '',
-          'page',
-          'community',
-          'user',
-          'mod_id'
-        )}
-    />
-    <ObjectAutocomplete
-      placeholder="Filter by community"
+      placeholder="Filtrer par communauté"
       jwt={$profile?.jwt}
       listing_type="All"
       showWhenEmpty={true}
-      label="Community"
+      label="Communauté"
       class="flex-1"
       q={$page.url.searchParams.get('community') ? 'Selected' : ''}
       on:select={(e) =>
@@ -114,12 +95,12 @@
     />
     <UserAutocomplete
       instance={$page.url.searchParams.get('instance') || undefined}
-      placeholder="Filter by user"
+      placeholder="Filtrer par utilisateur"
       jwt={$profile?.jwt}
       listing_type="All"
       showWhenEmpty={true}
       class="flex-1"
-      label="User"
+      label="Utilisateur"
       q={$page.url.searchParams.get('user')
         ? data.filters.user ?? 'Selected'
         : ''}
@@ -128,12 +109,12 @@
     />
     {#if $profile?.user && isAdmin($profile?.user)}
       <UserAutocomplete
-        placeholder="Filter by moderator"
+        placeholder="Filtrer par modérateur"
         jwt={$profile?.jwt}
         listing_type="All"
         showWhenEmpty={true}
         class="flex-1"
-        label="Moderator"
+        label="Modérateur"
         q={$page.url.searchParams.get('mod_id')
           ? data.filters.moderator ?? 'Selected'
           : ''}
@@ -160,7 +141,7 @@
       }}
       size="square-lg"
       class="self-end flex-shrink-0"
-      title="Clear filters"
+      title="Effacer les filtres"
     >
       <Icon src={XMark} size="16" mini />
     </Button>
@@ -190,15 +171,15 @@
           </colgroup>
           <thead class="text-left sticky top-0">
             <tr class="rounded-t-lg overflow-hidden">
-              <th>Time</th>
-              <th>Moderator</th>
+              <th>Temps</th>
+              <th>Modérateur</th>
               <th>Action</th>
-              <th>User</th>
-              <th>Community</th>
-              <th>Content</th>
-              <th>Reason</th>
-              <th>Link</th>
-            </tr>
+              <th>Utilisateur</th>
+              <th>Communauté</th>
+              <th>Contenu</th>
+              <th>Raison</th>
+              <th>Lien</th>
+           </tr>
           </thead>
           <tbody class="text-sm">
             {#each data.modlog as modlog}
@@ -208,14 +189,16 @@
         </table>
       </div>
     {/if}
-    <Pageination
-      page={data.page}
-      on:change={(e) => searchParam($page.url, 'page', e.detail.toString())}
-    />
+    {#if data.modlog.length >= 40}
+      <Pageination
+        page={data.page}
+        on:change={(e) => searchParam($page.url, 'page', e.detail.toString())}
+      />
+    {/if}
   {:else}
     <Placeholder
-      title="No results"
-      description="There are no mod logs with that filter. Try refining your search."
+      title="Aucun résultat"
+      description="Il n'y a aucun journal de modération correspondant à ce filtre. Essayez d'affiner votre recherche."
       icon={MagnifyingGlass}
     />
   {/if}

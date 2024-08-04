@@ -107,8 +107,7 @@
     : ''} {highlight} {$$props.class}"
   id="#{node.comment_view.comment.id.toString()}"
 >
-  <button
-    on:click={() => (open = !open)}
+  <div
     class="flex flex-row cursor-pointer gap-2 items-center group text-[13px] flex-wrap w-full"
   >
     <span class:font-bold={op} class="flex flex-row gap-1 items-center">
@@ -158,7 +157,7 @@
         />
       {/if}
     </span>
-  </button>
+  </div>
   {#if open}
     <div transition:slide={{ duration: 500, easing: expoOut }}>
       <div

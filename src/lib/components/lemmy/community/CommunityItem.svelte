@@ -36,6 +36,7 @@
 
 <div class="py-4 flex flex-col gap-2 text-sm max-w-full relative">
   <div class="flex flex-row items-center max-w-full w-full">
+  <div class="flex flex-row items-center gap-2">
     <a
       href="/c/{fullCommunityName(
         community.community.name,
@@ -45,10 +46,11 @@
     >
       <Entity
         icon={community.community.icon}
-        label={new URL(community.community.actor_id).hostname}
+        label=""
         name={community.community.title}
       ></Entity>
     </a>
+  </div>
     <div class="ml-auto flex flex-row items-center gap-2">
       <Button size="square-md" on:click={() => (showInfo = !showInfo)}>
         <Icon src={InformationCircle} size="16" micro />

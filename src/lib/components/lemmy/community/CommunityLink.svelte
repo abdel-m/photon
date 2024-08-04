@@ -16,7 +16,7 @@
   {...$$restProps}
   class="items-center flex flex-row gap-2 hover:underline max-w-full min-w-0 {$$props.class ||
     ''}"
-  href="/c/{community.name}@{new URL(community.actor_id).hostname}"
+  href="/c/{community.name}"
   data-sveltekit-preload-data="tap"
 >
   {#if avatar}

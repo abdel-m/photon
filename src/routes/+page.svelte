@@ -36,7 +36,6 @@
           <Location changeDefault selected={data.type_} />
         {/if}
         <Sort changeDefault selected={data.sort} />
-        <ViewSelect />
       </div>
     </Header>
   </header>
